@@ -340,127 +340,73 @@ void TIMER2_voidSetCTCCompareMatchValue(u8 Copy_u8CTCValue)
 }
 
 /***********Macros for enable interrupt functions  for TIMER 1,2&3 ************/
-
-void TIMER0_voidEnableInterrupt(u8 Copy_u8TIMERMode)
+void TIMER0_voidOVEnableInterrupt(void)
 {
-	if (Copy_u8TIMERMode == TIMER_NORMAL_MODE)
-	{
-		SET_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_TOIE0);
-	}
-	else if (Copy_u8TIMERMode == TIMER_CTC_TOP_OCR_MODE)
-	{
-		SET_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_OCIE0);
-	}
-	else
-	{
-		// Nothing
-	}
+	SET_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_TOIE0);
 }
 
-void TIMER1_voidEnableInterrupt(u8 Copy_u8TIMERMode,u8 Copy_u8OC_REG)
+void TIMER0_voidOCEnableInterrupt(void)
 {
-	if (Copy_u8TIMERMode == TIMER_NORMAL_MODE)
-	{
-		SET_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_TOIE1);
-	}
-	else if (Copy_u8TIMERMode == TIMER_CTC_TOP_OCR_MODE)
-	{
-		if (Copy_u8OC_REG == TIMER1_OC_REGA)
-		{
-			SET_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_OCIE1A);
-		}
-		else if (Copy_u8OC_REG == TIMER1_OC_REGB)
-		{
-			SET_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_OCIE1B);
-		}
-		else
-		{
-			// Nothing
-		}
-	}
-	else
-	{
-		// Nothing
-	}
+	SET_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_OCIE0);
 }
 
-void TIMER2_voidEnableInterrupt(u8 Copy_u8TIMERMode)
+void TIMER1A_voidOCEnableInterrupt(void)
 {
-	if (Copy_u8TIMERMode == TIMER_NORMAL_MODE)
-	{
-		SET_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_TOIE2);
-	}
-	else if (Copy_u8TIMERMode == TIMER_CTC_TOP_OCR_MODE)
-	{
-		SET_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_OCIE2);
-	}
-	else
-	{
-		// Nothing
-	}
+	SET_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_OCIE1A);
+}
+void TIMER1B_voidOCEnableInterrupt(void)
+{
+	SET_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_OCIE1B);
+}
+void TIMER1_voidOVEnableInterrupt(void)
+{
+	SET_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_TOIE1);
 }
 
+void TIMER2_voidOVEnableInterrupt(void)
+{
+	SET_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_TOIE2);
+}
+
+void TIMER2_voidOCEnableInterrupt(void)
+{
+	SET_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_OCIE2);
+
+}
 /*********Macros for disable interrupt functions  for TIMER 1,2&3 **********/
-
-
-void TIMER0_voidDisableInterrupt(u8 Copy_u8TIMERMode)
+void TIMER0_voidOVDisableInterrupt(void)
 {
-	if (Copy_u8TIMERMode == TIMER_NORMAL_MODE)
-	{
-		CLEAR_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_TOIE0);
-	}
-	else if (Copy_u8TIMERMode == TIMER_CTC_TOP_OCR_MODE)
-	{
-		CLEAR_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_OCIE0);
-	}
-	else
-	{
-		// Nothing
-	}
-}
-void TIMER1_voidDisableInterrupt(u8 Copy_u8TIMERMode,u8 Copy_u8OC_REG)
-{
-	if (Copy_u8TIMERMode == TIMER_NORMAL_MODE)
-	{
-		CLEAR_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_TOIE1);
-	}
-	else if (Copy_u8TIMERMode == TIMER_CTC_TOP_OCR_MODE)
-	{
-		if (Copy_u8OC_REG == TIMER1_OC_REGA)
-		{
-			CLEAR_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_OCIE1A);
-		}
-		else if (Copy_u8OC_REG == TIMER_CTC_TOP_OCR_MODE)
-		{
-			CLEAR_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_OCIE1B);
-		}
-		else
-		{
-			// Nothing
-		}
-	}
-	else
-	{
-		// Nothing
-	}
+	CLEAR_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_TOIE0);
 }
 
-void TIMER2_voidDisableInterrupt(u8 Copy_u8TIMERMode)
+void TIMER0_voidOCDisableInterrupt(void)
 {
-	if (Copy_u8TIMERMode == TIMER_NORMAL_MODE)
-	{
-		CLEAR_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_TOIE2);
-	}
-	else if (Copy_u8TIMERMode == TIMER_CTC_TOP_OCR_MODE)
-	{
-		CLEAR_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_OCIE2);
-	}
-	else
-	{
-		// Nothing
-	}
+	CLEAR_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_OCIE0);
 }
 
+void TIMER1A_voidOCDisableInterrupt(void)
+{
+	CLEAR_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_OCIE1A);
+}
+void TIMER1B_voidOCDisableInterrupt(void)
+{
+	CLEAR_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_OCIE1B);
+}
+void TIMER1_voidOVDisableInterrupt(void)
+{
+	CLEAR_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_TOIE1);
+}
+
+void TIMER2_voidOVDisableInterrupt(void)
+{
+	CLEAR_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_TOIE2);
+}
+
+void TIMER2_voidOCDisableInterrupt(void)
+{
+	CLEAR_BIT(TIMER_TIMSK_REG,TIMER_TIMSK_OCIE2);
+
+}
 /********** Macros for busy wait OV functions for TIMER 1,2&3 **************/
 
 void TIMER0_voidSetBusyWait_OVFMode(u32 Copy_u32BusywaitedTime)

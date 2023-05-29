@@ -22,13 +22,21 @@ void TIMER1A_voidSetCTCCompareMatchValue(u16 Copy_u16CTCValue);
 void TIMER1B_voidSetCTCCompareMatchValue(u16 Copy_u16CTCValue);
 void TIMER2_voidSetCTCCompareMatchValue(u8 Copy_u8CTCValue);
 
-void TIMER0_voidEnableInterrupt(u8 Copy_u8TIMERMode);
-void TIMER1_voidEnableInterrupt(u8 Copy_u8TIMERMode,u8 Copy_u8OC_REG);
-void TIMER2_voidEnableInterrupt(u8 Copy_u8TIMERMode);
+void TIMER0_voidOVEnableInterrupt(void);
+void TIMER0_voidOCEnableInterrupt(void);
+void TIMER1A_voidOCEnableInterrupt(void);
+void TIMER1B_voidOCEnableInterrupt(void);
+void TIMER1_voidOVEnableInterrupt(void);
+void TIMER2_voidOVEnableInterrupt(void);
+void TIMER2_voidOCEnableInterrupt(void);
 
-void TIMER0_voidDisableInterrupt(u8 Copy_u8TIMERMode);
-void TIMER1_voidDisableInterrupt(u8 Copy_u8TIMERMode,u8 Copy_u8OC_REG);
-void TIMER2_voidDisableInterrupt(u8 Copy_u8TIMERMode);
+void TIMER0_voidOVDisnableInterrupt(void);
+void TIMER0_voidOCDisnableInterrupt(void);
+void TIMER1A_voidOCDisableInterrupt(void);
+void TIMER1B_voidOCDisableInterrupt(void);
+void TIMER1_voidOVDisableInterrupt(void);
+void TIMER2_voidOVDisableInterrupt(void);
+void TIMER2_voidOCDisableInterrupt(void);
 
 void TIMER0_voidSetBusyWait_OVFMode(u32 Copy_u32BusywaitedTime);
 void TIMER1_voidSetBusyWait_OVFMode(u32 Copy_u32BusywaitedTime);
